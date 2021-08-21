@@ -6,9 +6,10 @@ Following this [guide](https://www.cs-fundamentals.com/c-programming/static-and-
 
 First of all, run these commands: 
 ```
-gcc -I . -c -fPIC matrix.c -Wall
-gcc -I . -c -fPIC help.c -Wall
-gcc -I ./list/ -c -fPIC ./list/list.c -Wall
+gcc -I . -c -fPIC src/matrix.c -Wall
+gcc -I . -c -fPIC src/help.c -Wall
+gcc -I . -c -fPIC src/help.c -Wall
+gcc -I ./list/ -c -fPIC src/list.c -Wall
 gcc -shared -o matlib.so matrix.o help.o list.o
 ```
 - -I tells the linker to look for the header files in . directory
@@ -24,7 +25,7 @@ and run `sudo ldconfig`
 
 Then run `make` which consists of the following:
 ```
-gcc -c main.c params.c 
+gcc -c src/main.c src/params.c 
 gcc -o main main.o params.o matlib.so
 ```
 * to see library dependencies run `ldd main`.
@@ -98,10 +99,11 @@ After that all is cool!
 Run the following to compile (this has been added to makefile)
 ``` 
 gcc -c tests_cmocka.c -I/cmocka-1.1.5/include
-gcc -c matrix.c
-gcc -c ./list/list.c
-gcc -c help.c
-gcc -L./cmocka-1.1.5/build/src -o "testmain" ./tests_cmocka.o ./matrix.o ./help.o ./list.o -lcmocka
+gcc -c src/matrix.c
+gcc -c src/list.c
+gcc -c src/help.c
+gcc -c src/error.c
+gcc -L./cmocka-1.1.5/build/src -o cmocka ./cmocka_unit_tests.o ./matrix.o ./help.o ./list.o -lcmocka
 ```
 
 You may run ```make cmocka``` if installing cmocka from within the local directory.
