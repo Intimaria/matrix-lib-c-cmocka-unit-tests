@@ -110,7 +110,7 @@ accordingly.
 At the moment this isn't working cross platform unfortunately,
 because it installs differently in different platforms and I did not have time to optimise this. 
 
-You will need to change line 11 in the makefile to reflect where the library is installed in your system.
+You will need to change lines 11 & 26 in the makefile to reflect where the library is installed in your system.
 
 
 **TODO**  
