@@ -98,18 +98,19 @@ After that all is cool!
 
 Run the following to compile (this has been added to makefile)
 ``` 
-gcc -c tests_cmocka.c -I/cmocka-1.1.5/include
+gcc -c -I/cmocka-1.1.5/include tests/cmocka_unit_tests.c
 gcc -c src/matrix.c
 gcc -c src/list.c
 gcc -c src/help.c
 gcc -c src/error.c
-gcc -L./cmocka-1.1.5/build/src -o cmocka ./cmocka_unit_tests.o ./matrix.o ./help.o ./list.o -lcmocka
+gcc -L./cmocka-1.1.5/build/src -o cmocka ./cmocka_unit_tests.o ./matrix.o ./help.o ./list.o ./error.o -lcmocka
 ```
 
-You may run ```make cmocka``` if installing cmocka from within the local directory.
+You may run ```make cmocka``` if installing cmocka from within the local directory. That will use 
+the matrix dynamic shared library rather than compiling individual files. 
 Otherwise you will have to compile in the commandline, or modify the makefile 
 accordingly. 
-At the moment this isn't working cross platform unfortunately,
+At the moment it isn't working cross platform unfortunately,
 because it installs differently in different platforms and I did not have time to optimise this. 
 
 You will need to change lines 11 & 26 in the makefile to reflect where the library is installed in your system.
