@@ -34,11 +34,11 @@ matrix_test.o: tests/matrix_test.c
 main.o: src/main.c
 	$(CC) -c src/main.c
 
-matrix.o: src/matrix.c
-	$(CC) -c src/matrix.c 
-
 params.o: src/params.c
 	$(CC) -c src/params.c 
+
+matrix.o: src/matrix.c
+	$(CC) $(OBJFLAGS) src/matrix.c 
 
 help.o: src/help.c
 	$(CC) $(OBJFLAGS) src/help.c
