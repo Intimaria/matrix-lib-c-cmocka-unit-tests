@@ -79,9 +79,9 @@ Using [this tutorial](https://www.wfbsoftware.de/c-unit-testing-with-cmocka/)
 The tar file is included in the main directory.
 
 The tests are contained in a single file.
-It contains the obligatory inserts for cmocka, plus the library .c file for definitions. 
+It contains the obligatory inserts for cmocka, plus the library header files. 
 Defined Set up & Tear down for groups and for individual tests. 
-Created a helped function to create generic matrixes.
+Created a helper function to create generic matrixes.
 Defined a main which calls the tests & defines the tests.
 
 Compilation (assumes cmocka-5.1.1 folder is in same directory - again for portability)
