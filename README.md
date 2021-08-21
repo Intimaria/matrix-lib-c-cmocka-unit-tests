@@ -74,7 +74,7 @@ make test
 ```
 
 If you would like to compile tests with cmocka:
-
+(must install cmocka first, please see docs/documentation.md for more info)
 ```
 make clean 
 make cmocka
