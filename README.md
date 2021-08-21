@@ -110,9 +110,6 @@ or it will not work.
 
 Otherwise, follow the instructions below.
 
-An example instruction could look like this:
-`-p mult -1 mymatrix1.txt -2 mymatrix2.txt -o outfile.txt`
-
 ### The following are input and output file instructions: 
 
 Generic instruction format is: [--in1 FILE --in2 FILE --op OP --o FILE]
@@ -121,17 +118,17 @@ further details below.
 *Input file 1*: 
 Receives first matrix. Use the operator `-1` or `--in1`, then file name; for instance "matrix1.txt". 
 
-`[-1 | --in1]  [file_in_1]`
+`[-1 | --in1]  [FILE 1 location/name]`
 
 *Input file 2*: 
 If necessary, receives second matrix. Use the operator `-2` or `--in2`, then file name; for instance "matrix2.txt".
 
-`[-2 | --in2]  [file_in_2]`
+`[-2 | --in2]  [FILE 2 location/name]`
 
 *Output*: 
 Writes resulting matrix to file. Use the operator `-o` or `--out`, then file name; for instance "Result.txt".
 
- `[-o | --out]  [file_out]`
+ `[-o | --out]  [FILE out location/name]`
  
 
 ### The following are valid operations: 
@@ -147,10 +144,10 @@ Writes resulting matrix to file. Use the operator `-o` or `--out`, then file nam
 
 *idty*: Creates an identity matrix (uses the column value of input file). 		
 ```[-p | --op]  [idty]```
-
+ 
 
 *mult_scalar*: Multiply a matrix by a scalar value.
-```[-p | --op]  [mult_scalar]```	
+```[-p | --op]  [mult_scalar] [-s | --scalar] [double value]```	
 
 
 *cmp*: Compares a matrix with another. Requires two input files.	
