@@ -7,7 +7,7 @@ Following this [guide](https://www.cs-fundamentals.com/c-programming/static-and-
 First of all, run these commands: 
 ```
 gcc -I . -c -fPIC src/matrix.c -Wall
-gcc -I . -c -fPIC src/help.c -Wall
+gcc -I . -c -fPIC src/error.c -Wall
 gcc -I . -c -fPIC src/help.c -Wall
 gcc -I ./list/ -c -fPIC src/list.c -Wall
 gcc -shared -o matlib.so matrix.o help.o list.o
