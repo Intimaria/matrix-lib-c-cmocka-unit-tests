@@ -1,0 +1,116 @@
+Welcome to Matrix Library App
+=============================
+Program by Inti Maria Tidball - Seminario de C - 2020
+
+This is a program to operate with float/double 
+value matrices mathematically.
+
+Matrices are read from files. The files are written with
+a special format.
+
+In order to use this program you must input at  
+least one input file, one operation instruction, and one file for output. 
+Add two input files for operations between two matrices.
+
+The files have a specific format, they must specify 
+the encoding of the data, either M1 (text) or M2 (binary) in the header. 
+
+You would normally use text (M1) when writing your own 
+matrix files by hand on a computer.
+
+/* --- The following is a descripcion of the format 
+you must use in your matrix file -- */
+
+first line: M1 or M2, this is  the format of matrix (M1 is ASCII, M2 is binary)
+second line: comments are preceded by a # (numeral)
+third line: Dimensions: int values indicating ROW and COLUMN size of matrix
+fourth or more lines: the data values, these may be ASCII or binary,
+and they can be stored formatted as a matrix or as a single array. 
+
+Example:
+
+M1 
+# this is a comment  
+2 3 
+1.2 4.5 6.5  
+5.6 4.3 3.4  
+
+Remember to add input and output files. A second input file is necessary when
+operating with two matrices. The input file should be empty. This is where
+the result matrix will be written at the end of the program. 
+
+For each instruction you must use the following format:
+
+[-SHORT_INSTRUCTION or --LONG_INSTRUCTION]  [CORRESPONDING_VALUE]
+
+You can compare, multiply or sum two matrixes. You will need two input files for these operations.
+To duplicate, create an identity or null matrix, or multiply by a scalar, you will only need
+one input file. 
+All operations produce an out or result file. 
+As long as each instruction follows it's format of instruction-then-value, 
+they can be written in any order.
+You may use the results of these operations to then perform 
+further operations such as sums and multiplication. Have fun! 
+
+An example instruction could look like this:
+-p mult -1 mymatrix1.txt -2 mymatrix2.txt -o outfile.txt 
+
+The following are input and output file instructions: 
+====================================================
+
+input 1:    [-1 | --in1]  [file_in_1]
+Receives first matrix from file_in. File_in_1 is the file name, for instance "Matrix1.txt". 
+
+input 2:    [-2 | --in2]  [file_in_2]
+If necessary, receives second matrix from file_in. File_in_2 is the file name, for instance "Matrix2.txt".
+
+output:    [-o | --out]  [file_out]
+Writes resulting matrix to file_out. File_out is the file name, for instance "MatrixRes.txt".
+
+The following are valid operations: 
+================================
+dup:		[-p | --op]  [dup]	
+Duplicate a matrix.
+
+null:		[-p | --op]  [null]	
+Creates a null matrix (uses the row and column value of input file). 
+
+idty:		[-p | --op]  [idty]	
+Creates an identity matrix (uses the column value of input file).
+
+mult_scalar:	[-p | --op]  [mult_scalar]	
+Multiply a matrix by a scalar value.
+
+cmp:		[-p | --op]  [cmp]
+Compares a matrix with another. Requires two input files.
+
+mult or sum:	[-p | --op]  [mult | sum]	
+Multiply or sum two matrices. Requires two input files and compatible matrixes. 
+
+
+Examples of valid input :
+[--in1 file_in_1] [--op operation type] [--out file_out]
+(optional..) [--in2 file_in_2]
+
+for duplicating, creating null or identity matrix:
+[--in1|-1  file_in_1] [--op|-p dup|null|idty] [--out|-o file_out]
+
+for multiplication by scalar value:
+[--in1|-1  file_in_1] [--op|-p mult_scalar] [--scalar|-s value] [--out|-o file_out]
+
+for multiplying, summing or comparing two matrixes, use two input files:
+[--in1|-1  file_in_1] [--op|-p mult|sum|cmp] [--in2|-2 file_in_2] [--out|-o file_out]
+
+WARNING: Matrixes must be compatible 
+in size in order to be multipled or added.
+
+For multiplication ensure that Matrix A is rows:N x cols:M and Matrix B is rows:M x cols:H.
+The resulting Matrix C will be of size rows:N x cols:H.
+In other words, the first matrix must have column size equal to second matrix row size,
+you will receive a resulting matrix whose rows are equal to first matrix, 
+and whose columns are equal to second matrix. 
+
+For sums ensure that Matrix A is equal in size to Matrix B (rows:N x cols:M).
+The resulting Matrix C will be of the same size (rows:N x cols:M).
+
+
