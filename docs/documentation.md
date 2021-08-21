@@ -9,7 +9,7 @@ First of all, run these commands:
 gcc -I . -c -fPIC matrix.c -Wall
 gcc -I . -c -fPIC help.c -Wall
 gcc -I ./list/ -c -fPIC ./list/list.c -Wall
-gcc -shared -o libmatrix.so matrix.o help.o list.o
+gcc -shared -o matlib.so matrix.o help.o list.o
 ```
 - -I tells the linker to look for the header files in . directory
 - -c creates object files 
@@ -17,20 +17,22 @@ gcc -shared -o libmatrix.so matrix.o help.o list.o
 - see fPIC & other options: 
 https://gcc.gnu.org/onlinedocs/gcc/Code-Gen-Options.html
 
-To compile or recompile .so, run `make libmatrix.so` and
-copy the library libmatrix.so into /usr/lib 
-and run  sudo ldconfig 
+To compile or recompile only the .so, run `make matlib.so` and
+copy the library matlib.so into /usr/lib 
+and run `sudo ldconfig` 
 (must do this everytime you recompile the dyamic lib)
 
 Then run `make` which consists of the following:
 ```
 gcc -c main.c params.c 
-gcc -o main main.o params.o libmatrix.so
+gcc -o main main.o params.o matlib.so
 ```
 * to see library dependencies run `ldd main`.
 
 **After testing this works locally.
 Makefile calls dynamic library in the local directory for now for portability. 
+
+Running any of the ```make``` options will compile the library automatically.
 
 
 ## Using assert.h to unit test
